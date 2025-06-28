@@ -1,0 +1,18 @@
+Before 17 july.
+
+Also dataset itself analysis (?) - yes, definitevely!
+
+Discussion on statistical behavior of features that are most import for classificaiton.
+- Few features from dataset, process them and engineered features. Staistics on features on different conditions.
+- Summary statistics. CRUCIAL!
+- Explain how data behaves.
+
+Just few outputs on ML so less sense.
+
+T-test to verify model differences are significant.
+
+Confusion matrix of course.
+
+Two differences are significant and why or not.
+
+6th July out of office!
