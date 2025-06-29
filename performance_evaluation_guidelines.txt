@@ -1,0 +1,17 @@
+
+==========================================
+Performance Evaluation part.
+
+Pre process dataset (remove insignificant features, map nominal to numeric features, scale features (min-max scaling or z-normalization))
+
+Train and test theese models (just on entire test dataset or also splitting it into k folds)
+- Naive Bayes
+- Decision Trees
+- Artificial NN
+- Logistic Regression
+- Expectation Maximization Clustering
+Do summary statistics (in case of k-folds: paired t-test + confidence intervals; otherwise only k-folds).
+
+Do for binary and multiclass classification.
+
+Extra: redo training avoiding the features we find that are most correlated within each other!
