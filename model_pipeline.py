@@ -11,11 +11,15 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import StratifiedKFold, cross_validate, RandomizedSearchCV
 from sklearn.metrics import classification_report
 from scipy.stats import ttest_rel  # Moved to top-level import
+import os
 
 # 1. Paths to training and testing sets - VERIFIED CORRECT
-data_dir = Path("/Users/sano/Desktop/Project-SPE/CSV Files")
-train_fp = data_dir / "Training and Testing Sets" / "UNSW_NB15_training-set.csv"
-test_fp  = data_dir / "Training and Testing Sets" / "UNSW_NB15_testing-set.csv"
+base_path = os.path.join("datasets", "CSV_Files")
+additional_path = os.path.join('training_testing_sets')
+file_training = 'UNSW_NB15_training-set.csv'
+file_testing = 'UNSW_NB15_testing-set.csv'
+train_fp = os.path.join(base_path, additional_path, file_training)
+test_fp  = os.path.join(base_path, additional_path, file_testing)
 
 # 2. Load datasets - VERIFIED CORRECT
 df_train = pd.read_csv(train_fp)
@@ -25,11 +29,11 @@ print(f"Loaded training data: {df_train.shape[0]} rows, {df_train.shape[1]} colu
 print(f"Loaded testing  data: {df_test.shape[0]} rows, {df_test.shape[1]} columns")
 
 # 3. Separate features and labels - VERIFIED CORRECT
-target_col = 'label'
-X_train = df_train.drop(columns=[target_col])
-y_train = df_train[target_col]
-X_test  = df_test.drop(columns=[target_col])
-y_test  = df_test[target_col]
+target_cols = ['label', 'attack_cat']
+X_train = df_train.drop(columns=target_cols)
+y_train = df_train['label']
+X_test  = df_test.drop(columns=target_cols)
+y_test  = df_test['label']
 
 # 4. Identify numeric and categorical features - VERIFIED CORRECT
 numeric_feats = X_train.select_dtypes(include=['int64', 'float64']).columns.tolist()
