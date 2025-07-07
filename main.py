@@ -1,4 +1,4 @@
-from data_loading import load_datasets
+from data_loading import load_datasets, clean_dataset, create_train_test_split
 from dataset_analysis import analyze_dataset
 from preprocessing import DataPreprocessor
 from model_training import ModelTrainer
@@ -18,8 +18,23 @@ def main():
     print("="*80)
     print("Loading and preparing datasets...")
     print("="*80)
-    df_train, df_test = load_datasets()
-    
+    #df_train, df_test = load_datasets()
+
+    base_path = os.path.join("datasets", "CSV_Files")
+    additional_path = os.path.join('training_testing_sets')
+
+    file_training = 'UNSW_NB15_training-set.csv'
+    file_testing = 'UNSW_NB15_testing-set.csv'
+    df_train = pd.read_csv(os.path.join(base_path, additional_path, file_training))
+    df_test = pd.read_csv(os.path.join(base_path, additional_path, file_testing), header=None, names=df_train.columns)
+    """ df_full = pd.concat([df_train, df_test], ignore_index=True)
+    df_full = clean_dataset(df_full)
+    df_train, df_test = create_train_test_split(df_full) """
+    df_train['attack_cat_num'] = pd.factorize(df_train['attack_cat'])[0]
+    df_test['attack_cat_num'] = pd.factorize(df_test['attack_cat'])[0]
+    df_train = clean_dataset(df_train)
+    df_test = clean_dataset(df_test)
+
     print("\n" + "="*80)
     print("Analyzing dataset...")
     print("="*80)
