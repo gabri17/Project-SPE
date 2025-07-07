@@ -6,6 +6,7 @@ import scipy.stats as stats
 import numpy as np
 import random
 from scipy.stats import ttest_ind, mannwhitneyu
+from sklearn.preprocessing import MinMaxScaler
 #correlations between features and correlations with attack category and label
 
 base_path = os.path.join("datasets", "CSV_Files")
@@ -30,6 +31,31 @@ df = pd.concat([df1, df2, df3, df4], ignore_index=True)
 df.columns = names
 df = df.rename(columns={'Label': 'label'})
 
+""" num_cols = df.select_dtypes(include=['number']).columns.tolist()
+print(f"Numerical columns: {len(num_cols)}")
+scaler = MinMaxScaler()
+
+df[num_cols] = scaler.fit_transform(df[num_cols]) """
+
+###########
+""" # Before scaling
+sns.boxplot(data=df[['sbytes', 'ct_dst_src_ltm', 'sttl']])
+plt.title("Boxplot without scaling")
+plt.show()
+
+# After Min-Max scaling
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaled_features = scaler.fit_transform(df[['sbytes', 'ct_dst_src_ltm', 'sttl']])
+scaled_df = pd.DataFrame(scaled_features, columns=['sbytes', 'ct_dst_src_ltm', 'sttl'])
+
+sns.boxplot(data=scaled_df)
+plt.title("Boxplot with Min-Max scaling")
+plt.show()
+exit(0) """
+###########
+
+
 LESS_DATA = 10_000
 
 df = df.sample(n=LESS_DATA, random_state=42)
@@ -49,8 +75,8 @@ print(label_correlations.head(10))
 
 #most correlated feature: value analysis
 most_correlated_feature = label_correlations.index[0]
-most_correlated_feature = label_correlations.index[1]
-most_correlated_feature = 'ct_dst_src_ltm'
+#most_correlated_feature = label_correlations.index[1]
+#most_correlated_feature = 'Stime'
 #most_correlated_feature = 'ct_dst_sport_ltm'
 #most_correlated_feature = 'rate' #ok
 #most_correlated_feature = 'ct_src_dport_ltm'
@@ -176,3 +202,10 @@ plt.title(f'Correlation between label and {most_correlated_feature}')
 plt.xlabel('Label')
 plt.ylabel(most_correlated_feature)
 plt.show() """
+
+plt.figure(figsize=(8, 6))
+sns.boxplot(x='label', y=most_correlated_feature, data=df)
+plt.title(f'{most_correlated_feature} by Label (0 = No Attack, 1 = Attack)')
+plt.xlabel('Label')
+plt.ylabel(most_correlated_feature)
+plt.show()
