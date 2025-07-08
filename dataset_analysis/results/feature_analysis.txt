@@ -1,0 +1,20 @@
+Feature: dbytes
+Average when there is NO ATTACK: 41058.51922376602 +- 166277.54784411512
+95% confidence interval: [40839.729770133265, 41277.30867739878]
+Average when there is an ATTACK: 4446.658612500506 +- 114309.24368589361
+95% confidence interval: [4051.3946635328552, 4841.922561468157]
+
+Median of dbytes when there is NO ATTACK: 2478.0
+Median of dbytes when there is an ATTACK: 0.0
+
+25th percentile (Q1) when NO ATTACK: 178.0
+75th percentile (Q3) when NO ATTACK: 17238.0
+25th percentile (Q1) when ATTACK: 0.0
+75th percentile (Q3) when ATTACK: 0.0
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: -36611.86061126552
+Median difference: -2478.0
+Cohen's d: -0.227918520961937
