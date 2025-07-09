@@ -1,0 +1,22 @@
+Feature: Sload
+Mean when there is NO ATTACK: 28278455.80601793 +- 109630111.06913613
+95% confidence interval: [28134203.545784928, 28422708.066250935]
+Mean when there is an ATTACK: 96886215.29211038 +- 155242887.6528322
+95% confidence interval: [96349409.03879097, 97423021.5454298]
+
+Median of Sload when there is NO ATTACK: 559386.9375
+95% confidence interval: [559386.9375, 559923.3125]
+Median of Sload when there is an ATTACK: 57000000.0
+95% confidence interval: [57000000.0, 57000000.0]
+
+25th percentile (Q1) when NO ATTACK: 116453.261725
+75th percentile (Q3) when NO ATTACK: 1453131.875
+25th percentile (Q1) when ATTACK: 45600000.0
+75th percentile (Q3) when ATTACK: 114000000.0
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: 68607759.48609245
+Median difference: 56440613.0625
+Cohen's d: 0.5894580644689195

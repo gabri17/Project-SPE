@@ -1,0 +1,63 @@
+Pair of features with high correlations (> 0.8):
+Name              Name            
+Ltime             Stime               1.000000
+dwin              swin                0.997207
+Dpkts             dloss               0.992163
+dbytes            dloss               0.991342
+                  Dpkts               0.970808
+ct_dst_ltm        ct_src_dport_ltm    0.960154
+ct_srv_dst        ct_srv_src          0.956734
+sloss             sbytes              0.953492
+ct_dst_src_ltm    ct_srv_dst          0.951026
+ct_src_ ltm       ct_src_dport_ltm    0.945332
+ct_srv_src        ct_dst_src_ltm      0.942175
+ct_dst_ltm        ct_src_ ltm         0.938519
+synack            tcprtt              0.931305
+ct_dst_sport_ltm  ct_src_dport_ltm    0.921490
+tcprtt            ackdat              0.918899
+ct_dst_src_ltm    ct_src_dport_ltm    0.910894
+ct_state_ttl      sttl                0.906061
+sttl              label               0.904393
+ct_dst_src_ltm    ct_dst_sport_ltm    0.890305
+ct_dst_ltm        ct_dst_sport_ltm    0.880201
+ct_dst_src_ltm    ct_dst_ltm          0.876491
+ct_srv_dst        ct_src_dport_ltm    0.875945
+label             ct_state_ttl        0.873694
+ct_srv_src        ct_src_dport_ltm    0.869748
+ct_src_ ltm       ct_dst_sport_ltm    0.860270
+ct_srv_dst        ct_dst_ltm          0.859895
+ct_dst_src_ltm    ct_src_ ltm         0.856802
+ct_srv_dst        ct_dst_sport_ltm    0.848829
+ct_src_ ltm       ct_srv_src          0.840623
+ct_dst_sport_ltm  ct_srv_src          0.840553
+ct_dst_ltm        ct_srv_src          0.836664
+ct_srv_dst        ct_src_ ltm         0.824682
+Dpkts             Spkts               0.822581
+is_sm_ips_ports   Sintpkt             0.806408
+Summary table of features with correlation > 0.8:
+         feature                                                                         correlated_with
+          sbytes                                                                                   sloss
+          dbytes                                                                            dloss, Dpkts
+            sttl                                                                     ct_state_ttl, label
+           sloss                                                                                  sbytes
+           dloss                                                                           dbytes, Dpkts
+           Spkts                                                                                   Dpkts
+           Dpkts                                                                    dbytes, dloss, Spkts
+            swin                                                                                    dwin
+            dwin                                                                                    swin
+           Stime                                                                                   Ltime
+           Ltime                                                                                   Stime
+         Sintpkt                                                                         is_sm_ips_ports
+          tcprtt                                                                          synack, ackdat
+          synack                                                                                  tcprtt
+          ackdat                                                                                  tcprtt
+ is_sm_ips_ports                                                                                 Sintpkt
+    ct_state_ttl                                                                             sttl, label
+      ct_srv_src ct_srv_dst, ct_dst_ltm, ct_src_ ltm, ct_src_dport_ltm, ct_dst_sport_ltm, ct_dst_src_ltm
+      ct_srv_dst ct_srv_src, ct_dst_ltm, ct_src_ ltm, ct_src_dport_ltm, ct_dst_sport_ltm, ct_dst_src_ltm
+      ct_dst_ltm ct_srv_src, ct_srv_dst, ct_src_ ltm, ct_src_dport_ltm, ct_dst_sport_ltm, ct_dst_src_ltm
+     ct_src_ ltm  ct_srv_src, ct_srv_dst, ct_dst_ltm, ct_src_dport_ltm, ct_dst_sport_ltm, ct_dst_src_ltm
+ct_src_dport_ltm       ct_srv_src, ct_srv_dst, ct_dst_ltm, ct_src_ ltm, ct_dst_sport_ltm, ct_dst_src_ltm
+ct_dst_sport_ltm       ct_srv_src, ct_srv_dst, ct_dst_ltm, ct_src_ ltm, ct_src_dport_ltm, ct_dst_src_ltm
+  ct_dst_src_ltm     ct_srv_src, ct_srv_dst, ct_dst_ltm, ct_src_ ltm, ct_src_dport_ltm, ct_dst_sport_ltm
+           label                                                                      sttl, ct_state_ttl

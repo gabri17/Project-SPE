@@ -1,0 +1,22 @@
+Feature: Sjit
+Mean when there is NO ATTACK: 1454.1659596105412 +- 13504.428556235798
+95% confidence interval: [1436.3967142509007, 1471.9352049701818]
+Mean when there is an ATTACK: 2520.4469777216163 +- 31628.512131469768
+95% confidence interval: [2411.080401564322, 2629.8135538789106]
+
+Median of Sjit when there is NO ATTACK: 23.790304
+95% confidence interval: [23.696916, 23.884068]
+Median of Sjit when there is an ATTACK: 0.0
+95% confidence interval: [0.0, 0.0]
+
+25th percentile (Q1) when NO ATTACK: 0.0
+75th percentile (Q3) when NO ATTACK: 460.11691275
+25th percentile (Q1) when ATTACK: 0.0
+75th percentile (Q3) when ATTACK: 0.0
+
+T-test p-value: 2.5913957337487357e-79
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 1.064e-244
+Mean difference: 1066.2810181110751
+Median difference: -23.790304
+Cohen's d: 0.06306872726170391

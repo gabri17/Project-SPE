@@ -1,0 +1,69 @@
+MEANINGFUL FEATURES FOR PREDICTION (some flow and then basic features)
+- proto: the network protocol used, it is usefel because there are protocol-specific attack patterns
+- state: in which state of the connection we are, suspicious states may indicate port scans or SYN floods
+!- dur: DDoS and brute-force can have longer durations
+
+- sbytes: #bytes from source to dest (large can be data exfiltration)
+- dbytes: #bytes from dest to source
+- sttl: time to live for packets from source to dest
+- dttl: time to live for packets from dest to source
+!- sloss: source packets retransmitted or dropped (DDos)
+!- dloss: destination packets retransmitted or dropped
+
+!- service: Network service used (HTTP, SSH, DNS) (there can be service specific Attacks)
+
+!- Sload: source traffic load (bits per second) (spikes -> DDoS and worm)
+- Dload: destination traffic load (bits per second) (data exfiltration or server exploitation)
+
+!- Spkts: #packets from source to dest (many packets -> DDoS)
+- Dpkts: #pacekts from dest to source (same)
+
+==========================================================================================================================================
+
+!- swin: source TCP window (recoinnaissance techniques when these values are anomal), buffer size from source to dest
+- dwin: buffer size from dest to source
+
+- stcpb and dtcpb are base sequence Numbers
+!- smeanz and dmeansz: mean packet sizes (small DDoS, large data exfiltration)
+
+- trans_depth: number of http requests in single connection
+- res_bdy_len: actual size of server response
+
+- sjit/djit: network delay variation, source/dest
+
+- stime/ltime: connections start and end times
+
+!- sintpkt and dintpkt: inter-packet times (high values: slow DoS)
+
+- tcprtt/synack/ackdat: TCP connection setup round-trip time and other TCP connection setup times
+
+- is_sm_ips_ports: 1 if source/dest IP+ports identical
+- ct_state_ttl: Connection states grouped by TTL ranges
+- ct_flw_http_mthd: flows with get/post methods
+- is_ftp_login: 1 if FTP used credentials
+
+ct_*: counts of related connections grouped by service/source/destination/port:
+- High ct_src_ltm = scanning/host enumeration
+- High ct_dst_ltm = targeted victim
+- High ct_srv_dst = service-specific attacks
+- Abnormal ct_dst_src_ltm = persistent C2 channels
+
+
+
+==========================================================================================================================================
+==========================================================================================================================================
+
+WHAT TO DO:
+Ratios like sbytes/dbytes or Spkts/Dpkts can reveal asymmetries (e.g., minimal requests but massive replies → reflection attack).
+
+Features like dur, sloss, and sttl help distinguish attack types:
+- Low dur + high Spkts → DDoS.
+- High dur + service=SSH → brute-force.
+
+Features like sbytes, dbytes, Sload, and Spkts establish baselines for normal behavior.
+
+==========================================================================================================================================
+==========================================================================================================================================
+
+ATTACKS:
+Fuzzers, Analysis, Backdoors, DoS Exploits, Generic, Reconnaissance, Shellcode and Worms

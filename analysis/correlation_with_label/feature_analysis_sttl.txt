@@ -1,0 +1,22 @@
+Feature: sttl
+Mean when there is NO ATTACK: 37.100685787222076 +- 28.29149097131211
+95% confidence interval: [37.06345959563864, 37.13791197880551]
+Mean when there is an ATTACK: 240.13564676624657 +- 49.88131210393506
+95% confidence interval: [239.96316478870793, 240.3081287437852]
+
+Median of sttl when there is NO ATTACK: 31.0
+95% confidence interval: [31.0, 31.0]
+Median of sttl when there is an ATTACK: 254.0
+95% confidence interval: [254.0, 254.0]
+
+25th percentile (Q1) when NO ATTACK: 31.0
+75th percentile (Q3) when NO ATTACK: 31.0
+25th percentile (Q1) when ATTACK: 254.0
+75th percentile (Q3) when ATTACK: 254.0
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: 203.0349609790245
+Median difference: 223.0
+Cohen's d: 6.376414249640394

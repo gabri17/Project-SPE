@@ -1,0 +1,71 @@
+Feature: Spkts
+
+Group Normal:
+  Mean: 36.797788768882135 +- 67.22638635244255
+  95% confidence interval (mean): [36.70933170098296, 36.88624583678131]
+  Median: 14.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 48.0
+
+Group Exploits:
+  Mean: 33.96202133632791 +- 277.5711507905535
+  95% confidence interval (mean): [31.383728397754933, 36.54031427490088]
+  Median: 10.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 20.0
+
+Group Reconnaissance:
+  Mean: 7.034603560448988 +- 14.85387438168141
+  95% confidence interval (mean): [6.788417682739521, 7.280789438158456]
+  Median: 10.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 10.0
+
+Group DoS:
+  Mean: 24.117348498746406 +- 243.86729023706303
+  95% confidence interval (mean): [20.37938485879587, 27.85531213869694]
+  Median: 2.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 10.0
+
+Group Generic:
+  Mean: 2.453367118214599 +- 16.73899923291989
+  95% confidence interval (mean): [2.382690537775211, 2.5240436986539874]
+  Median: 2.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 2.0
+
+Group Shellcode:
+  Mean: 5.9649238914626075 +- 3.997610293302433
+  95% confidence interval (mean): [5.763196643372193, 6.166651139553022]
+  Median: 2.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 10.0
+
+Group Fuzzers:
+  Mean: 13.764827187989772 +- 34.37189344458353
+  95% confidence interval (mean): [13.332160779236851, 14.197493596742692]
+  Median: 10.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 12.0
+
+Group Worms:
+  Mean: 18.2183908045977 +- 23.62565730185416
+  95% confidence interval (mean): [14.683254905295124, 21.753526703900278]
+  Median: 10.0
+  25th percentile (Q1): 10.0
+  75th percentile (Q3): 10.0
+
+Group Backdoor:
+  Mean: 6.76728209531988 +- 18.55670545638542
+  95% confidence interval (mean): [6.0132495788074865, 7.521314611832273]
+  Median: 2.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 2.0
+
+Group Analysis:
+  Mean: 5.354874859917818 +- 12.234640303230465
+  95% confidence interval (mean): [4.891202095165167, 5.81854762467047]
+  Median: 2.0
+  25th percentile (Q1): 2.0
+  75th percentile (Q3): 10.0

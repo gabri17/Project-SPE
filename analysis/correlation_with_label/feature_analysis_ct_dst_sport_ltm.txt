@@ -1,0 +1,22 @@
+Feature: ct_dst_sport_ltm
+Mean when there is NO ATTACK: 2.6081331768498135 +- 5.123224611994456
+95% confidence interval: [2.601391993038593, 2.614874360661034]
+Mean when there is an ATTACK: 10.392299001192095 +- 8.19831684906812
+95% confidence interval: [10.36395047059071, 10.42064753179348]
+
+Median of ct_dst_sport_ltm when there is NO ATTACK: 1.0
+95% confidence interval: [1.0, 1.0]
+Median of ct_dst_sport_ltm when there is an ATTACK: 10.0
+95% confidence interval: [10.0, 10.0]
+
+25th percentile (Q1) when NO ATTACK: 1.0
+75th percentile (Q3) when NO ATTACK: 1.0
+25th percentile (Q1) when ATTACK: 1.0
+75th percentile (Q3) when ATTACK: 17.0
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: 7.784165824342281
+Median difference: 9.0
+Cohen's d: 1.3885039015148846

@@ -1,0 +1,22 @@
+Feature: ct_state_ttl
+Mean when there is NO ATTACK: 0.03404778516327108 +- 0.3056682760448534
+95% confidence interval: [0.03364558416875427, 0.034449986157787896]
+Mean when there is an ATTACK: 1.8295428018289173 +- 0.4772966075070917
+95% confidence interval: [1.8278923828791556, 1.831193220778679]
+
+Median of ct_state_ttl when there is NO ATTACK: 0.0
+95% confidence interval: [0.0, 0.0]
+Median of ct_state_ttl when there is an ATTACK: 2.0
+95% confidence interval: [2.0, 2.0]
+
+25th percentile (Q1) when NO ATTACK: 0.0
+75th percentile (Q3) when NO ATTACK: 0.0
+25th percentile (Q1) when ATTACK: 2.0
+75th percentile (Q3) when ATTACK: 2.0
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: 1.7954950166656463
+Median difference: 2.0
+Cohen's d: 5.4030647908402925

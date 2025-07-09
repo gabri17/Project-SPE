@@ -1,0 +1,40 @@
+Analisi ANOVA per la feature categorica attack_cat
+dur: p-value=0, eta squared=0.0007
+sbytes: p-value=0, eta squared=0.0044
+dbytes: p-value=0, eta squared=0.0060
+sttl: p-value=0, eta squared=0.8356
+dttl: p-value=0, eta squared=0.3092
+sloss: p-value=0, eta squared=0.0070
+dloss: p-value=0, eta squared=0.0096
+Sload: p-value=0, eta squared=0.0400
+Dload: p-value=0, eta squared=0.0483
+Spkts: p-value=0, eta squared=0.0174
+Dpkts: p-value=0, eta squared=0.0141
+swin: p-value=0, eta squared=0.1337
+dwin: p-value=0, eta squared=0.1329
+stcpb: p-value=0, eta squared=0.0735
+dtcpb: p-value=0, eta squared=0.0736
+smeansz: p-value=0, eta squared=0.0242
+dmeansz: p-value=0, eta squared=0.0781
+trans_depth: p-value=0, eta squared=0.0088
+res_bdy_len: p-value=0, eta squared=0.0008
+Sjit: p-value=0, eta squared=0.0148
+Djit: p-value=0, eta squared=0.0045
+Sintpkt: p-value=1.852e-297, eta squared=0.0006
+Dintpkt: p-value=2.713e-293, eta squared=0.0005
+tcprtt: p-value=0, eta squared=0.0900
+synack: p-value=0, eta squared=0.0706
+ackdat: p-value=0, eta squared=0.0850
+is_sm_ips_ports: p-value=3.101e-125, eta squared=0.0002
+ct_state_ttl: p-value=0, eta squared=0.7793
+ct_flw_http_mthd: p-value=nan, eta squared=nan
+is_ftp_login: p-value=nan, eta squared=nan
+ct_srv_src: p-value=0, eta squared=0.2847
+ct_srv_dst: p-value=0, eta squared=0.2918
+ct_dst_ltm: p-value=0, eta squared=0.2394
+ct_src_ ltm: p-value=0, eta squared=0.2268
+ct_src_dport_ltm: p-value=0, eta squared=0.2759
+ct_dst_sport_ltm: p-value=0, eta squared=0.3022
+ct_dst_src_ltm: p-value=0, eta squared=0.3251
+
+big effect when > 0.14

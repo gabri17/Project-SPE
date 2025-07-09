@@ -1,0 +1,22 @@
+Feature: ct_srv_src
+Mean when there is NO ATTACK: 7.627580941461102 +- 9.087762463945731
+95% confidence interval: [7.615623184024752, 7.639538698897452]
+Mean when there is an ATTACK: 20.114294873989596 +- 14.896202558807708
+95% confidence interval: [20.062786075066953, 20.16580367291224]
+
+Median of ct_srv_src when there is NO ATTACK: 5.0
+95% confidence interval: [5.0, 5.0]
+Median of ct_srv_src when there is an ATTACK: 20.0
+95% confidence interval: [20.0, 20.0]
+
+25th percentile (Q1) when NO ATTACK: 2.0
+75th percentile (Q3) when NO ATTACK: 9.0
+25th percentile (Q1) when ATTACK: 5.0
+75th percentile (Q3) when ATTACK: 33.0
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: 12.486713932528495
+Median difference: 15.0
+Cohen's d: 1.247373422651963

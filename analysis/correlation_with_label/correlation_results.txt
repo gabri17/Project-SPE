@@ -1,0 +1,49 @@
+
+
+Top 20 positive correlations with label:
+Name
+sttl                0.904393
+ct_state_ttl        0.873694
+ct_dst_src_ltm      0.439916
+ct_dst_sport_ltm    0.419056
+ct_src_dport_ltm    0.396749
+ct_srv_dst          0.386509
+ct_srv_src          0.383007
+ct_src_ ltm         0.343246
+ct_dst_ltm          0.339464
+Ltime               0.275660
+Stime               0.275660
+Sload               0.192278 #up to here
+ackdat              0.143443
+tcprtt              0.143109
+dttl                0.134947
+synack              0.122253
+ct_flw_http_mthd    0.083188
+is_ftp_login        0.031956
+Sjit                0.020959 #done
+sbytes              0.010180 #done
+
+Top 20 negative correlations with label:
+Name
+sbytes             0.010180
+dur                0.001959
+Dintpkt           -0.010632
+is_sm_ips_ports   -0.015477
+Sintpkt           -0.019034
+res_bdy_len       -0.027339
+trans_depth       -0.029041
+sloss             -0.043272
+Djit              -0.054420
+smeansz           -0.065363
+dbytes            -0.075543
+dloss             -0.095855
+Dpkts             -0.115947
+Spkts             -0.120880
+Dload             -0.219710
+stcpb             -0.233422
+dtcpb             -0.233513
+dmeansz           -0.272397
+dwin              -0.313920 #done
+swin              -0.315108 #done
+
+Categorical columns: ['srcip', 'sport', 'dstip', 'dsport', 'proto', 'state', 'service', 'ct_ftp_cmd', 'attack_cat']
