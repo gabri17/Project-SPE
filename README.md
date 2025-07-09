@@ -8,3 +8,5 @@ Powered by @me and @Sano.
 Need to install directory for datasets in CSV format from <a href="https://unsw-my.sharepoint.com/:f:/g/personal/z5025758_ad_unsw_edu_au/EnuQZZn3XuNBjgfcUu4DIVMBLCHyoLHqOswirpOQifr1ag?e=gKWkLS">here</a>.
 
 Then it must inserted in the /datasets directory inside the repository.
+
+**Note**: rename the downloaded directory "CSV Files" in "CSV_Files".
