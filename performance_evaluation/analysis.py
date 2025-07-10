@@ -90,10 +90,19 @@ def plot_confusion_matrices(results, y_true):
     
     for i, (model_name, data) in enumerate(results.items(), 1):
         cm = data['confusion_matrix']
+        
+        # Create DataFrame for CSV export
+        cm_df = pd.DataFrame(
+            cm,
+            index=['Normal', 'Attack'],  # Row labels (actual classes)
+            columns=['Normal', 'Attack']  # Column labels (predicted classes)
+        )
+        # Save confusion matrix to CSV
+        cm_df.to_csv(f"results/{model_name}_confusion_matrix.csv")
+        
+        # Plot heatmap visualization
         plt.subplot(2, 3, i)
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                    xticklabels=['Normal', 'Attack'],
-                    yticklabels=['Normal', 'Attack'])
+        sns.heatmap(cm_df, annot=True, fmt='d', cmap='Blues')
         plt.title(f'{model_name} Confusion Matrix')
         plt.xlabel('Predicted')
         plt.ylabel('Actual')
