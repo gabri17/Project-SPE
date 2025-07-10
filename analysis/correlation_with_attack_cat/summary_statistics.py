@@ -5,10 +5,11 @@ from data_loader import UNSWNB15Loader
 import seaborn as sns
 
 class FeatureAnalysis:
-    def __init__(self, df, feature, attack_cat_col='attack_cat'):
+    def __init__(self, df, feature, measure_unit='', attack_cat_col='attack_cat'):
         self.df = df
         self.feature = feature
-        self.label_col = attack_cat_col
+        self.measure_unit = measure_unit
+        self.attack_cat_col = attack_cat_col
         self.groups = {
             cat: df[df[attack_cat_col] == cat][feature]
             for cat in df[attack_cat_col].unique()
@@ -60,14 +61,27 @@ class FeatureAnalysis:
         }
 
     def plot_boxplot(self, save_path=None):
-        plt.figure(figsize=(8, 6))
-        sns.boxplot(x=self.label_col, y=self.feature, data=self.df)
-        plt.title(f'Boxplot of {self.feature} per attack_cat (0=NO ATTACK, 1=ATTACK)')
+        plt.figure(figsize=(17, 6))
+        myPalette = {
+            'Normal':      "#1f77b4",  
+            'Generic':     "#ff7f0e",  
+            'DoS':         "#d62728",  
+            'Exploits':    "#9467bd",  
+            'Backdoor':    "#2ca02c",  
+            'Worms':       "#8c564b",  
+            'Reconnaissance': "#e377c2",
+            'Fuzzers':     "#7f7f7f",
+            'Analysis':    "#bcbd22",
+            'Shellcode':   "#17becf",
+        }
+        ax = sns.boxplot(x=self.attack_cat_col, y=self.feature, data=self.df, width=0.3, showfliers=False, palette=myPalette)
+        plt.title(f'Boxplot of {self.feature} per attack category')
         plt.xlabel('Attack category')
-        plt.ylabel(self.feature)
+        plt.ylabel(f"{self.feature} [{self.measure_unit}]")
         if save_path:
             plt.savefig(save_path)
         plt.close()
+
 
     def write_results(self, file_path):
         means_stds = self.mean_std()
@@ -125,12 +139,13 @@ def main():
 
     print("Dataset loaded successfully.")
 
-    feature = 'dmeansz'
-    analysis = FeatureAnalysis(df, feature)
+    feature = 'ct_srv_dst'
+    measure = 'No. Connections'
+    analysis = FeatureAnalysis(df, feature, measure)
 
     analysis.print_results()
     analysis.write_results(f"analysis/correlation_with_attack_cat/feature_analysis_{feature}.txt")
-    #analysis.plot_boxplot(f"analysis/feature_analysis_boxplot_{feature}_by_attack_cat.png")
+    analysis.plot_boxplot(f"analysis/feature_analysis_boxplot_{feature}_by_attack_cat.png")
 
 if __name__ == "__main__":
     main()

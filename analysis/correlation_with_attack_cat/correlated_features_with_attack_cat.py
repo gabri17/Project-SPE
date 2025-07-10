@@ -29,6 +29,7 @@ for col in numeric_cols:
     sns.boxplot(x='attack_cat', y=col, data=df)
     plt.title(f"Distribution of {col} for attack_cat")
     plt.savefig(f"analysis/correlation_with_attack_cat/distribution_{col}_per_attack_cat.png")
+    plt.close()
 
 #2) t-test for verifying when we have statistically significant results
 print(f"\nAnalisi ANOVA per la feature categorica attack_cat")
@@ -53,3 +54,4 @@ for col in categorical_cols:
     sns.countplot(x=col, hue='attack_cat', data=df)
     plt.title(f"Count of {col} for each attack_cat")
     plt.savefig(f"analysis/correlation_with_attack_cat/count_{col}_per_attack_cat.png")
+    plt.close()
