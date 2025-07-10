@@ -9,10 +9,22 @@ Median of ct_srv_dst when there is NO ATTACK: 4.0
 Median of ct_srv_dst when there is an ATTACK: 20.0
 95% confidence interval: [20.0, 20.0]
 
+Min value with NO ATTACK: 1
+Max value with NO ATTACK: 63
+
+Min value with ATTACK: 1
+Max value with ATTACK: 67
+
 25th percentile (Q1) when NO ATTACK: 2.0
 75th percentile (Q3) when NO ATTACK: 8.0
 25th percentile (Q1) when ATTACK: 4.0
 75th percentile (Q3) when ATTACK: 33.0
+
+Coefficient of Variation when NO ATTACK: 1.2199
+Coefficient of Variation when ATTACK: 0.7513
+
+MAD when NO ATTACK: 5.7977, Gap: 0.3919
+MAD when ATTACK: 13.1601, Gap: 0.3293
 
 T-test p-value: 0.0
 Mann-Whitney U test p-value: 0.0

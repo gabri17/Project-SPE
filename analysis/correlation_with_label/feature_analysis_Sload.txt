@@ -9,10 +9,22 @@ Median of Sload when there is NO ATTACK: 559386.9375
 Median of Sload when there is an ATTACK: 57000000.0
 95% confidence interval: [57000000.0, 57000000.0]
 
+Min value with NO ATTACK: 0.0
+Max value with NO ATTACK: 5344000000.0
+
+Min value with ATTACK: 0.0
+Max value with ATTACK: 5988000256.0
+
 25th percentile (Q1) when NO ATTACK: 116453.261725
 75th percentile (Q3) when NO ATTACK: 1453131.875
 25th percentile (Q1) when ATTACK: 45600000.0
 75th percentile (Q3) when ATTACK: 114000000.0
+
+Coefficient of Variation when NO ATTACK: 3.8768
+Coefficient of Variation when ATTACK: 1.6023
+
+MAD when NO ATTACK: 48995660.3476, Gap: 0.8663
+MAD when ATTACK: 76681953.8252, Gap: 0.3957
 
 T-test p-value: 0.0
 Mann-Whitney U test p-value: 0.0

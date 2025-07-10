@@ -5,7 +5,7 @@ df = loader.load()
 
 print("Dataset loaded successfully.")
 
-#1) compute correlations between numerical features and label
+#compute correlations between numerical features and label
 label_correlations = df.corr(numeric_only=True)['label'].drop('label').sort_values(ascending=False)
 
 TO_CONSIDER = 20

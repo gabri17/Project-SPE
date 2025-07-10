@@ -9,6 +9,12 @@ Median of ct_state_ttl when there is NO ATTACK: 0.0
 Median of ct_state_ttl when there is an ATTACK: 2.0
 95% confidence interval: [2.0, 2.0]
 
+Min value with NO ATTACK: 0
+Max value with NO ATTACK: 6
+
+Min value with ATTACK: 0
+Max value with ATTACK: 6
+
 25th percentile (Q1) when NO ATTACK: 0.0
 75th percentile (Q3) when NO ATTACK: 0.0
 25th percentile (Q1) when ATTACK: 2.0

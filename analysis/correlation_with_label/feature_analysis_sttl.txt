@@ -9,10 +9,22 @@ Median of sttl when there is NO ATTACK: 31.0
 Median of sttl when there is an ATTACK: 254.0
 95% confidence interval: [254.0, 254.0]
 
+Min value with NO ATTACK: 0
+Max value with NO ATTACK: 255
+
+Min value with ATTACK: 0
+Max value with ATTACK: 255
+
 25th percentile (Q1) when NO ATTACK: 31.0
 75th percentile (Q3) when NO ATTACK: 31.0
 25th percentile (Q1) when ATTACK: 254.0
 75th percentile (Q3) when ATTACK: 254.0
+
+Coefficient of Variation when NO ATTACK: 0.7626
+Coefficient of Variation when ATTACK: 0.2077
+
+MAD when NO ATTACK: 11.1850, Gap: 0.1507
+MAD when ATTACK: 25.7371, Gap: 0.0536
 
 T-test p-value: 0.0
 Mann-Whitney U test p-value: 0.0

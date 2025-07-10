@@ -1,0 +1,34 @@
+Feature: ct_dst_src_ltm
+Mean when there is NO ATTACK: 4.961238779789108 +- 9.142619585035751
+95% confidence interval: [4.949208840872415, 4.973268718705801]
+Mean when there is an ATTACK: 19.861162899997822 +- 15.195177039808526
+95% confidence interval: [19.80862029287043, 19.913705507125215]
+
+Median of ct_dst_src_ltm when there is NO ATTACK: 2.0
+95% confidence interval: [2.0, 2.0]
+Median of ct_dst_src_ltm when there is an ATTACK: 20.0
+95% confidence interval: [20.0, 20.0]
+
+Min value with NO ATTACK: 1
+Max value with NO ATTACK: 63
+
+Min value with ATTACK: 1
+Max value with ATTACK: 67
+
+25th percentile (Q1) when NO ATTACK: 1.0
+75th percentile (Q3) when NO ATTACK: 4.0
+25th percentile (Q1) when ATTACK: 4.0
+75th percentile (Q3) when ATTACK: 33.0
+
+Coefficient of Variation when NO ATTACK: 1.8428
+Coefficient of Variation when ATTACK: 0.7651
+
+MAD when NO ATTACK: 5.1735, Gap: 0.5214
+MAD when ATTACK: 13.3687, Gap: 0.3366
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: 14.899924120208714
+Median difference: 18.0
+Cohen's d: 1.4737257687525933

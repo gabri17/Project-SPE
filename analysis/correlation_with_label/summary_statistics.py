@@ -124,6 +124,10 @@ class FeatureAnalysis:
             f.write(f"95% confidence interval: [{float(median_ci_0[0])}, {float(median_ci_0[1])}]\n")
             f.write(f"Median of {self.feature} when there is an ATTACK: {median_1}\n")
             f.write(f"95% confidence interval: [{float(median_ci_1[0])}, {float(median_ci_1[1])}]\n")
+            f.write(f"\nMin value with NO ATTACK: {self.group_0.min()}\n")
+            f.write(f"Max value with NO ATTACK: {self.group_0.max()}\n")
+            f.write(f"\nMin value with ATTACK: {self.group_1.min()}\n")
+            f.write(f"Max value with ATTACK: {self.group_1.max()}\n")
             f.write(f"\n25th percentile (Q1) when NO ATTACK: {q25_0}\n")
             f.write(f"75th percentile (Q3) when NO ATTACK: {q75_0}\n")
             f.write(f"25th percentile (Q1) when ATTACK: {q25_1}\n")
@@ -167,6 +171,10 @@ class FeatureAnalysis:
         print(f"75th percentile (Q3) when NO ATTACK: {q75_0}")
         print(f"25th percentile (Q1) when ATTACK: {q25_1}")
         print(f"75th percentile (Q3) when ATTACK: {q75_1}")
+        print(f"\nMin value with NO ATTACK: {self.group_0.min()}\n")
+        print(f"Max value with NO ATTACK: {self.group_0.max()}\n")
+        print(f"\nMin value with ATTACK: {self.group_1.min()}\n")
+        print(f"Max value with ATTACK: {self.group_1.max()}\n")
         print(f"\nCoefficient of Variation when NO ATTACK: {cv_0:.4f}")
         print(f"Coefficient of Variation when ATTACK: {cv_1:.4f}\n")
         print(f"MAD when NO ATTACK: {mad_0:.4f}, Gap: {gap_0:.4f}")
@@ -186,12 +194,12 @@ def main():
     """ df['sbytes_over_dbytes'] = df['sbytes'] / df['dbytes']
     df['sbytes_over_dbytes'].replace([np.inf, -np.inf], 0, inplace=True) """
 
-    feature = 'ct_dst_ltm'
-    analysis = FeatureAnalysis(df, feature, measure_unit='No. connections')
+    for (feature, unit) in [('sttl', 'TTL value'), ('ct_state_ttl', 'No. connections'), ('ct_dst_src_ltm', 'No. connections'), ('ct_dst_sport_ltm', 'No. connections'), ('ct_src_dport_ltm', 'No. connections'), ('ct_srv_dst', 'No. connections'), ('ct_srv_src', 'No. connections'), ('ct_src_ ltm', 'No. connections'), ('ct_dst_ltm', 'No. connections'), ('Sload', 'Source load (bits per second)')]:
+        analysis = FeatureAnalysis(df, feature, measure_unit=unit)
 
-    analysis.print_results()
-    analysis.write_results(f"analysis/correlation_with_label/feature_analysis_{feature}.txt")
-    analysis.plot_boxplot(f"analysis/correlation_with_label/feature_analysis_boxplot_{feature}_by_label.png")
+        analysis.print_results()
+        analysis.write_results(f"analysis/correlation_with_label/feature_analysis_{feature}.txt")
+        analysis.plot_boxplot(f"analysis/correlation_with_label/feature_analysis_boxplot_{feature}_by_label.png")
 
 if __name__ == "__main__":
     main()

@@ -24,19 +24,14 @@ print(f"Pair of features with high correlations (> {THRESHOLD}):")
 print(high_corr)
 
 #heatmap of correlations among different features
-plt.figure(figsize=(12, 12))
-sns.heatmap(corr_matrix, cmap='coolwarm', center=0)
+plt.figure(figsize=(18, 16))
+ax = sns.heatmap(corr_matrix, cmap='coolwarm', center=0)
 plt.title("Heatmap of correlations between numerical features")
-plt.savefig("analysis/all_to_all_correlation/heatmap_correlations.png")
-
-#dendrogram of features based on correlation
-plt.figure(figsize=(12, 5))
-corr_dist = 1 - np.abs(corr_matrix)
-linkage_matrix = linkage(corr_dist, method='average')
-dendrogram(linkage_matrix, labels=corr_matrix.columns, leaf_rotation=90)
-plt.title("Dendrogram of features based on correlation")
+plt.xticks(rotation=45, ha='right') 
+plt.yticks(rotation=0)
 plt.tight_layout()
-plt.savefig("analysis/all_to_all_correlation/dendrogram_correlation_based.png")
+plt.savefig("analysis/all_to_all_correlation/heatmap_correlations.png")
+plt.close()
 
 #summary table of most correlated features
 summary = []

@@ -9,10 +9,22 @@ Median of ct_src_dport_ltm when there is NO ATTACK: 1.0
 Median of ct_src_dport_ltm when there is an ATTACK: 13.0
 95% confidence interval: [12.0, 13.0]
 
+Min value with NO ATTACK: 1
+Max value with NO ATTACK: 60
+
+Min value with ATTACK: 1
+Max value with ATTACK: 67
+
 25th percentile (Q1) when NO ATTACK: 1.0
 75th percentile (Q3) when NO ATTACK: 2.0
 25th percentile (Q1) when ATTACK: 2.0
 75th percentile (Q3) when ATTACK: 20.0
+
+Coefficient of Variation when NO ATTACK: 2.0701
+Coefficient of Variation when ATTACK: 0.8907
+
+MAD when NO ATTACK: 3.7356, Gap: 0.5555
+MAD when ATTACK: 9.9440, Gap: 0.3688
 
 T-test p-value: 0.0
 Mann-Whitney U test p-value: 0.0
