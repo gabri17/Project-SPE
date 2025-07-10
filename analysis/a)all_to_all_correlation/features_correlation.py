@@ -25,10 +25,20 @@ print(high_corr)
 
 #heatmap of correlations among different features
 plt.figure(figsize=(18, 16))
-ax = sns.heatmap(corr_matrix, cmap='coolwarm', center=0)
-plt.title("Heatmap of correlations between numerical features")
-plt.xticks(rotation=45, ha='right') 
-plt.yticks(rotation=0)
+ax = sns.heatmap(
+    corr_matrix,
+    cmap='coolwarm',
+    center=0,
+    cbar_kws={'shrink': 0.8, 'label': 'Correlation', 'format': '%.2f'}
+)
+plt.title("Heatmap of correlations between numerical features", fontsize=20)
+plt.xticks(rotation=45, ha='right', fontsize=16)
+plt.yticks(rotation=0, fontsize=16)
+ax.set_xlabel("Feature", fontsize=18)
+ax.set_ylabel("Feature", fontsize=18)
+cbar = ax.collections[0].colorbar
+cbar.ax.tick_params(labelsize=16)
+cbar.set_label('Correlation', fontsize=18)
 plt.tight_layout()
 plt.savefig("analysis/all_to_all_correlation/heatmap_correlations.png")
 plt.close()

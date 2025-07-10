@@ -139,13 +139,13 @@ def main():
 
     print("Dataset loaded successfully.")
 
-    feature = 'ct_srv_dst'
-    measure = 'No. Connections'
+    feature = 'ct_dst_src_ltm'
+    measure = 'No. connections to same destination from same source in last 100 connections'
     analysis = FeatureAnalysis(df, feature, measure)
 
     analysis.print_results()
     analysis.write_results(f"analysis/correlation_with_attack_cat/feature_analysis_{feature}.txt")
-    analysis.plot_boxplot(f"analysis/feature_analysis_boxplot_{feature}_by_attack_cat.png")
+    analysis.plot_boxplot(f"analysis/correlation_with_attack_cat/feature_analysis_boxplot_{feature}_by_attack_cat.png")
 
 if __name__ == "__main__":
     main()

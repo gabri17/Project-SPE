@@ -1,0 +1,71 @@
+Feature: dbytes
+
+Group Normal (2218764 records):
+  Mean: 41 058.51922376602 +- 166277.54784411512
+  95% confidence interval (mean): [40839.729770133265, 41277.30867739878]
+  Median: 2478.0
+  25th percentile (Q1): 178.0
+  75th percentile (Q3): 17238.0
+
+Group Exploits (44525 records):
+  Mean: 17 748.041909039865 +- 135310.39512684522
+  95% confidence interval (mean): [16491.175569445695, 19004.908248634034]
+  Median: 354.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 2058.0
+
+Group Reconnaissance (13987 records):
+  Mean: 1 797.0892257095875 +- 95781.31522872293
+  95% confidence interval (mean): [209.62412725484273, 3384.5543241643322]
+  Median: 96.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 354.0
+
+Group DoS (16353 records):
+  Mean: 21 747.133736929005 +- 413967.085489603
+  95% confidence interval (mean): [15401.904279578608, 28092.3631942794]
+  Median: 0.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 0.0
+
+Group Generic (215481 records):
+  Mean: 1 067.2194393009129 +- 44557.45844189408
+  95% confidence interval (mean): [879.0858028795739, 1255.3530757222518]
+  Median: 0.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 0.0
+
+Group Shellcode (1511 records):
+  Mean: 146.39973527465256 +- 150.33625568958507
+  95% confidence interval (mean): [138.8134732522422, 153.9859972970629]
+  Median: 0.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 268.0
+
+Group Fuzzers (24246 records):
+  Mean: 518.7721273612142 +- 5693.725260180758
+  95% confidence interval (mean): [447.1006710092395, 590.4435837131889]
+  Median: 268.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 682.0
+
+Group Worms (174 records):
+  Mean: 76 965.46551724138 +- 201200.4197770718
+  95% confidence interval (mean): [46859.601463552026, 107071.32957093073]
+  Median: 268.0
+  25th percentile (Q1): 268.0
+  75th percentile (Q3): 354.0
+
+Group Backdoor (2329 records):
+  Mean: 295.29411764705884 +- 2682.212670206653
+  95% confidence interval (mean): [186.30518239177582, 404.28305290234186]
+  Median: 0.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 0.0
+
+Group Analysis (2677 records):
+  Mean: 296.18453492715724 +- 603.1470211837532
+  95% confidence interval (mean): [273.32625385527695, 319.04281599903754]
+  Median: 0.0
+  25th percentile (Q1): 0.0
+  75th percentile (Q3): 0.0

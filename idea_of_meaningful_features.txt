@@ -1,0 +1,63 @@
+proto,service,state,
+
+spkts,sloss,dloss,sload,rate,sttl,dttl,swin,stcpb,dtcpb,sinpkt
+
+tcprtt,dmean,trans_depth,response_body_len
+
+ct_state_ttl,
+
+ct_dst_src_ltm,ct_dst_ltm,ct_srv_src,ct_dst_src_ltm
+
+ct_flw_http_mthd,
+
+
+proto,service,state,spkts,sloss,dloss,sload,rate,sttl,dttl,swin,stcpb,dtcpb,sinpkt,tcprtt,dmean,trans_depth,response_body_len,ct_state_ttl,,ct_dst_src_ltm,ct_dst_ltm,ct_srv_src,ct_dst_src_ltm,ct_flw_http_mthd,
+
+even less:
+    'sttl',
+    'ct_dst_src_ltm',
+    'Sload',
+    'ackdat',
+    'is_ftp_login'
+
+more or less:
+selected_features = [
+    'sttl',                # strongest predictor
+    'ct_dst_src_ltm',      # best from connection tracking group
+    'ct_flw_http_mthd',    # potentially informative (categorical)
+    'sload',               # mild positive correlation
+    'tcprtt',              # moderate, representative of RTT
+    'dttl',                # mild correlation
+    'proto',               # categorical, worth testing
+    'service',             # categorical
+    'state'                # categorical
+]
+
+
+
+
+
+Eliminated:
+
+dload: not meaningful
+sbytes: corrleated with sloss
+
+
+smean: not meaningful
+synack,ackdat: correlated with tcprtt
+sjit,djit: not meaningful
+dur: not so meaningful (0.001 correlation)
+is_sm_ips_ports: not so meaningful (-0.02 correlation)
+is_ftp_login,ct_ftp_cmd: not so meanigful (<0.09 correlation)
+dpkts, because: highly correlated with spkts
+dwin, because: highly correlated with swin
+ct_dst_sport_ltm, because: highly correlated with ct_dst_src_ltm and similar meaning
+ct_src_dport_ltm, because: highly correlated with ct_dst_ltm and similar meaning
+ct_src_ltm, because: highly correlated with ct_srv_src and similar meaning
+ct_srv_dst, because: highly correlated with ct_dst_src_ltmand similar meaning
+
+all:
+dur,proto,service,state,spkts,dpkts,sbytes,dbytes,rate,sttl,dttl,sload,dload,sloss,dloss,sinpkt,dinpkt,sjit,djit,swin,stcpb,dtcpb,dwin,tcprtt,synack,ackdat,smean,dmean,trans_depth,response_body_len,ct_srv_src,ct_state_ttl,ct_dst_ltm,ct_src_dport_ltm,ct_dst_sport_ltm,ct_dst_src_ltm,is_ftp_login,ct_ftp_cmd,ct_flw_http_mthd,ct_src_ltm,ct_srv_dst,is_sm_ips_ports,
+
+
+Results show that using only significant features reduces complexity while preserving or improving detection performance, highlighting the importance of feature selection in cybersecurity applications.
