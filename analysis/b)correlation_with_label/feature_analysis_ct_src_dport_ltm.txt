@@ -1,0 +1,34 @@
+Feature: ct_src_dport_ltm
+Mean when there is NO ATTACK: 3.362 +- 6.960
+95% confidence interval: [3.353, 3.371]
+Mean when there is an ATTACK: 13.481 +- 12.008
+95% confidence interval: [13.440, 13.523]
+
+Median of ct_src_dport_ltm when there is NO ATTACK: 1.000
+95% confidence interval: [1.000, 1.000]
+Median of ct_src_dport_ltm when there is an ATTACK: 13.000
+95% confidence interval: [12.000, 13.000]
+
+Min value with NO ATTACK: 1.000
+Max value with NO ATTACK: 60.000
+
+Min value with ATTACK: 1.000
+Max value with ATTACK: 67.000
+
+25th percentile (Q1) when NO ATTACK: 1.000
+75th percentile (Q3) when NO ATTACK: 2.000
+25th percentile (Q1) when ATTACK: 2.000
+75th percentile (Q3) when ATTACK: 20.000
+
+Coefficient of Variation when NO ATTACK: 2.070
+Coefficient of Variation when ATTACK: 0.891
+
+MAD when NO ATTACK: 3.736, Gap: 0.556
+MAD when ATTACK: 9.944, Gap: 0.369
+
+T-test p-value: 0.000
+Mann-Whitney U test p-value: 0.000
+Anova F-Test p-value: 0.000
+Mean difference: 10.119
+Median difference: 12.000
+Cohen's d: 1.300
