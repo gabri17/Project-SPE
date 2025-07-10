@@ -7,9 +7,10 @@ from data_loader import UNSWNB15Loader
 import seaborn as sns
 
 class FeatureAnalysis:
-    def __init__(self, df, feature, label_col='label'):
+    def __init__(self, df, feature, measure_unit, label_col='label'):
         self.df = df
         self.feature = feature
+        self.measure_unit = measure_unit
         self.label_col = label_col
         self.group_0 = df[df[label_col] == 0][feature]
         self.group_1 = df[df[label_col] == 1][feature]
@@ -51,11 +52,13 @@ class FeatureAnalysis:
         return q25_0, q75_0, q25_1, q75_1
 
     def plot_boxplot(self, save_path=None):
-        plt.figure(figsize=(8, 6))
-        sns.boxplot(x=self.label_col, y=self.feature, data=self.df)
-        plt.title(f'Boxplot of {self.feature} per label (0=NO ATTACK, 1=ATTACK)')
+        plt.figure(figsize=(5, 6))
+        myPalette = {'0': "#1f77b4", '1': "#d62728"}
+        ax = sns.boxplot(x=self.label_col, y=self.feature, data=self.df, width=0.3, showfliers=False, palette=myPalette)
+        ax.set_xticklabels(['NO ATTACK', 'ATTACK'])
+        plt.title(f'Boxplot of {self.feature} per label')
         plt.xlabel('Label')
-        plt.ylabel(self.feature)
+        plt.ylabel(f"{self.feature} [{self.measure_unit}]")
         if save_path:
             plt.savefig(save_path)
         plt.close()
@@ -82,12 +85,26 @@ class FeatureAnalysis:
         nx, ny = len(x), len(y)
         pooled_std = np.sqrt(((nx-1)*x.std()**2 + (ny-1)*y.std()**2) / (nx+ny-2))
         return (x.mean() - y.mean()) / pooled_std
+    
+    def coefficient_of_variation(self):
+        cv_0 = self.group_0.std() / self.group_0.mean() if self.group_0.mean() != 0 else np.nan
+        cv_1 = self.group_1.std() / self.group_1.mean() if self.group_1.mean() != 0 else np.nan
+        return cv_0, cv_1
+
+    def mad_gap(self, data):
+        m = np.mean(data)
+        mad = np.mean(np.abs(data - m))
+        gap = mad / (2 * m) if m != 0 else np.nan
+        return mad, gap
+
 
     def write_results(self, file_path):
         mean_0, std_0, mean_1, std_1 = self.mean_std()
         ci_0, ci_1 = self.mean_confidence_interval()
         median_ci_0 = self.median_confidence_interval(self.group_0)
         median_ci_1 = self.median_confidence_interval(self.group_1)
+        mad_0, gap_0 = self.mad_gap(self.group_0)
+        mad_1, gap_1 = self.mad_gap(self.group_1)
         median_0, median_1 = self.median()
         q25_0, q75_0, q25_1, q75_1 = self.quantiles()
         t_stat, t_p = self.ttest()
@@ -95,6 +112,7 @@ class FeatureAnalysis:
         stat, p = self.anova()
         mean_diff, median_diff = self.mean_median_diff()
         cohens_d = self.cohens_d()
+        cv_0, cv_1 = self.coefficient_of_variation()
 
         with open(file_path, "w") as f:
             f.write(f"Feature: {self.feature}\n")
@@ -110,6 +128,10 @@ class FeatureAnalysis:
             f.write(f"75th percentile (Q3) when NO ATTACK: {q75_0}\n")
             f.write(f"25th percentile (Q1) when ATTACK: {q25_1}\n")
             f.write(f"75th percentile (Q3) when ATTACK: {q75_1}\n")
+            f.write(f"\nCoefficient of Variation when NO ATTACK: {cv_0:.4f}\n")
+            f.write(f"Coefficient of Variation when ATTACK: {cv_1:.4f}\n")
+            f.write(f"\nMAD when NO ATTACK: {mad_0:.4f}, Gap: {gap_0:.4f}\n")
+            f.write(f"MAD when ATTACK: {mad_1:.4f}, Gap: {gap_1:.4f}\n")
             f.write(f"\nT-test p-value: {t_p}\n")
             f.write(f"Mann-Whitney U test p-value: {u_p}\n")
             f.write(f"Anova F-Test p-value: {p:.4g}\n")
@@ -129,6 +151,9 @@ class FeatureAnalysis:
         stat, p = self.anova()
         mean_diff, median_diff = self.mean_median_diff()
         cohens_d = self.cohens_d()
+        cv_0, cv_1 = self.coefficient_of_variation()
+        mad_0, gap_0 = self.mad_gap(self.group_0)
+        mad_1, gap_1 = self.mad_gap(self.group_1)
 
         print(f"Average of {self.feature} when there is NO ATTACK: {mean_0} ± {std_0}")
         print(f"95% confidence interval: [{float(ci_0[0])}, {float(ci_0[1])}]")
@@ -142,6 +167,10 @@ class FeatureAnalysis:
         print(f"75th percentile (Q3) when NO ATTACK: {q75_0}")
         print(f"25th percentile (Q1) when ATTACK: {q25_1}")
         print(f"75th percentile (Q3) when ATTACK: {q75_1}")
+        print(f"\nCoefficient of Variation when NO ATTACK: {cv_0:.4f}")
+        print(f"Coefficient of Variation when ATTACK: {cv_1:.4f}\n")
+        print(f"MAD when NO ATTACK: {mad_0:.4f}, Gap: {gap_0:.4f}")
+        print(f"MAD when ATTACK: {mad_1:.4f}, Gap: {gap_1:.4f}\n")
         print(f"\nT-test p-value: {t_p}")
         print(f"Mann-Whitney U test p-value: {u_p}")
         print(f"Anova F-Test p-value={p:.4g}")
@@ -154,15 +183,15 @@ def main():
     df = loader.load()
     print("Dataset loaded successfully.")
 
-    df['sbytes_over_dbytes'] = df['sbytes'] / df['dbytes']
-    df['sbytes_over_dbytes'].replace([np.inf, -np.inf], 0, inplace=True)
+    """ df['sbytes_over_dbytes'] = df['sbytes'] / df['dbytes']
+    df['sbytes_over_dbytes'].replace([np.inf, -np.inf], 0, inplace=True) """
 
-    feature = 'sbytes_over_dbytes'
-    analysis = FeatureAnalysis(df, feature)
+    feature = 'ct_dst_ltm'
+    analysis = FeatureAnalysis(df, feature, measure_unit='No. connections')
 
     analysis.print_results()
-    analysis.write_results(f"analysis/feature_analysis_{feature}.txt")
-    analysis.plot_boxplot(f"analysis/feature_analysis_boxplot_{feature}_by_label.png")
+    analysis.write_results(f"analysis/correlation_with_label/feature_analysis_{feature}.txt")
+    analysis.plot_boxplot(f"analysis/correlation_with_label/feature_analysis_boxplot_{feature}_by_label.png")
 
 if __name__ == "__main__":
     main()

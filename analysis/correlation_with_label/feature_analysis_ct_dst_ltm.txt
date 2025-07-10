@@ -14,6 +14,12 @@ Median of ct_dst_ltm when there is an ATTACK: 13.0
 25th percentile (Q1) when ATTACK: 2.0
 75th percentile (Q3) when ATTACK: 20.0
 
+Coefficient of Variation when NO ATTACK: 1.2688
+Coefficient of Variation when ATTACK: 0.8735
+
+MAD when NO ATTACK: 3.9636, Gap: 0.3680
+MAD when ATTACK: 9.9203, Gap: 0.3615
+
 T-test p-value: 0.0
 Mann-Whitney U test p-value: 0.0
 Anova F-Test p-value: 0

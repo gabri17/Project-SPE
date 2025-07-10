@@ -1,0 +1,28 @@
+Feature: dmeansz
+Mean when there is NO ATTACK: 311.46028058865204 +- 340.54557696207706
+95% confidence interval: [311.01218773614954, 311.90837344115454]
+Mean when there is an ATTACK: 36.425198345383976 +- 153.44829330229155
+95% confidence interval: [35.894597525911536, 36.955799164856415]
+
+Median of dmeansz when there is NO ATTACK: 103.0
+95% confidence interval: [103.0, 103.0]
+Median of dmeansz when there is an ATTACK: 0.0
+95% confidence interval: [0.0, 0.0]
+
+25th percentile (Q1) when NO ATTACK: 80.0
+75th percentile (Q3) when NO ATTACK: 565.0
+25th percentile (Q1) when ATTACK: 0.0
+75th percentile (Q3) when ATTACK: 0.0
+
+Coefficient of Variation when NO ATTACK: 1.0934
+Coefficient of Variation when ATTACK: 4.2127
+
+MAD when NO ATTACK: 292.1391, Gap: 0.4690
+MAD when ATTACK: 59.3738, Gap: 0.8150
+
+T-test p-value: 0.0
+Mann-Whitney U test p-value: 0.0
+Anova F-Test p-value: 0
+Mean difference: -275.03508224326805
+Median difference: -103.0
+Cohen's d: -0.8516987119299777

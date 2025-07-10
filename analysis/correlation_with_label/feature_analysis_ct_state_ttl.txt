@@ -14,6 +14,12 @@ Median of ct_state_ttl when there is an ATTACK: 2.0
 25th percentile (Q1) when ATTACK: 2.0
 75th percentile (Q3) when ATTACK: 2.0
 
+Coefficient of Variation when NO ATTACK: 8.9776
+Coefficient of Variation when ATTACK: 0.2609
+
+MAD when NO ATTACK: 0.0668, Gap: 0.9812
+MAD when ATTACK: 0.3117, Gap: 0.0852
+
 T-test p-value: 0.0
 Mann-Whitney U test p-value: 0.0
 Anova F-Test p-value: 0

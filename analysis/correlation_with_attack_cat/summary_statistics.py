@@ -84,7 +84,7 @@ class FeatureAnalysis:
                 median = medians[cat]
                 #median_ci = median_cis[cat]
                 q25, q75 = quantiles[cat]
-                f.write(f"\nGroup {cat}:\n")
+                f.write(f"\nGroup {cat} ({len(self.groups[cat])} records):\n")
                 f.write(f"  Mean: {mean} +- {std}\n")
                 f.write(f"  95% confidence interval (mean): [{float(ci[0])}, {float(ci[1])}]\n")
                 f.write(f"  Median: {median}\n")
@@ -106,7 +106,7 @@ class FeatureAnalysis:
             median = medians[cat]
             #median_ci = median_cis[cat]
             q25, q75 = quantiles[cat]
-            print(f"\nGroup {cat}:")
+            print(f"\nGroup {cat} ({len(self.groups[cat])} records):")
             print(f"  Mean: {mean} +- {std}")
             print(f"  95% confidence interval (mean): [{float(ci[0])}, {float(ci[1])}]")
             print(f"  Median: {median}")
@@ -125,7 +125,7 @@ def main():
 
     print("Dataset loaded successfully.")
 
-    feature = 'Sload'
+    feature = 'dmeansz'
     analysis = FeatureAnalysis(df, feature)
 
     analysis.print_results()
