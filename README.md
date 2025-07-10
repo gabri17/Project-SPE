@@ -11,6 +11,8 @@ Then it must inserted in the /datasets directory inside the repository.
 
 **Note**: rename the downloaded directory "CSV Files" in "CSV_Files".
 
+Make sure to use at least version 3.12 of Python.
+
 # Project structure
 ```
 PROJECT-SPE/
