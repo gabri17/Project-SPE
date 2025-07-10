@@ -12,7 +12,7 @@ Then it must inserted in the /datasets directory inside the repository.
 **Note**: rename the downloaded directory "CSV Files" in "CSV_Files".
 
 # Project structure
-
+```
 PROJECT-SPE/
 ├── analysis/                                # Contains Python modules for statistical analysis
 │   ├── a)all_to_all_correlation/            # Analysis of all-to-all feature correlation
@@ -34,3 +34,4 @@ PROJECT-SPE/
 ├── Project-Idea.pdf                 # PDF document outlining the project idea
 ├── .gitignore                       # Git ignore file
 └── README.md                        # Project overview and documentation
+```
