@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -13,7 +14,7 @@ def calculate_confidence_interval(scores, confidence=0.95):
     h = std_err * stats.t.ppf((1 + confidence) / 2, len(scores) - 1)
     return mean, mean - h, mean + h
 
-def perform_statistical_analysis(results, metric='f1'):    
+def perform_statistical_analysis(results, metric='f1', results_dir="results"):    
     model_scores = {}
     for model_name, data in results.items():
         if 'cv_scores' in data and metric in data['cv_scores']:
@@ -39,12 +40,11 @@ def perform_statistical_analysis(results, metric='f1'):
     p_df = pd.DataFrame(p_values, index=model_names, columns=model_names)
     es_df = pd.DataFrame(effect_sizes, index=model_names, columns=model_names)
     
-    p_df.to_csv(f"results/{metric}_pairwise_pvalues.csv")
-    es_df.to_csv(f"results/{metric}_pairwise_effect_sizes.csv")
-    
+    p_df.to_csv(os.path.join(results_dir, f"{metric}_pairwise_pvalues.csv"))
+    es_df.to_csv(os.path.join(results_dir, f"{metric}_pairwise_effect_sizes.csv"))
     return p_df, es_df
 
-def plot_statistical_results(results, metric='f1'):
+def plot_statistical_results(results, metric='f1', results_dir="results"):
     model_names = []
     metric_means = []
     ci_lowers = []
@@ -82,10 +82,10 @@ def plot_statistical_results(results, metric='f1'):
         plt.text(v + 0.01, i, f"{v:.3f}", color='black', va='center')
     
     plt.tight_layout()
-    plt.savefig(f"results/{metric}_comparison_with_ci.png")
+    plt.savefig(os.path.join(results_dir, f"{metric}_comparison_with_ci.png"))
     plt.close()
 
-def plot_confusion_matrices(results, y_true):
+def plot_confusion_matrices(results, y_true, results_dir="results"):
     plt.figure(figsize=(15, 10))
     
     for i, (model_name, data) in enumerate(results.items(), 1):
@@ -96,7 +96,7 @@ def plot_confusion_matrices(results, y_true):
             index=['Normal', 'Attack'], 
             columns=['Normal', 'Attack'] 
         )
-        cm_df.to_csv(f"results/{model_name}_confusion_matrix.csv")
+        cm_df.to_csv(os.path.join(results_dir, f"{model_name}_confusion_matrix.csv"))
         
         plt.subplot(2, 3, i)
         sns.heatmap(cm_df, annot=True, fmt='d', cmap='Blues')
@@ -105,23 +105,24 @@ def plot_confusion_matrices(results, y_true):
         plt.ylabel('Actual')
     
     plt.tight_layout()
-    plt.savefig("results/confusion_matrices_binary.png")
+    plt.savefig(os.path.join(results_dir, "confusion_matrices_binary.png"))
     plt.close()
 
-def generate_reports(models, X_test, y_test):
+def generate_reports(models, X_test, y_test, models_dir="models", results_dir="results"):
     print("\nGenerating classification reports...")
     for model_name in models.keys():
         try:
-            model = joblib.load(f"models/{model_name.replace(' ', '_').lower()}_binary.pkl")
+            model_file = os.path.join(models_dir, f"{model_name.replace(' ', '_').lower()}_binary.pkl")
+            model = joblib.load(model_file)
             y_pred = model.predict(X_test)
             report = classification_report(y_test, y_pred, target_names=['Normal', 'Attack'], output_dict=True)
             report_df = pd.DataFrame(report).transpose()
-            report_df.to_csv(f"results/{model_name}_classification_report.csv")
+            report_df.to_csv(os.path.join(results_dir, f"{model_name}_classification_report.csv"))
             
             if hasattr(model, 'predict_proba'):
                 RocCurveDisplay.from_predictions(y_test, model.predict_proba(X_test)[:, 1])
                 plt.title(f'ROC Curve - {model_name}')
-                plt.savefig(f"results/{model_name}_roc_curve.png")
+                plt.savefig(os.path.join(results_dir, f"{model_name}_roc_curve.png"))
                 plt.close()
         except Exception as e:
             print(f"Could not generate report for {model_name}: {str(e)}")
