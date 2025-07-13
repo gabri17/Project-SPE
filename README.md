@@ -7,7 +7,7 @@ Powered by @me and @Sano.
 # Setup
 Need to install directory for datasets in CSV format from <a href="https://unsw-my.sharepoint.com/:f:/g/personal/z5025758_ad_unsw_edu_au/EnuQZZn3XuNBjgfcUu4DIVMBLCHyoLHqOswirpOQifr1ag?e=gKWkLS">here</a>.
 
-Then it must inserted in the /datasets directory inside the repository.
+Then it must be added in the /datasets directory inside the repository.
 
 **Note**: rename the downloaded directory "CSV Files" in "CSV_Files" and "Training and Testing Sets" in "training_testing_sets".
 
