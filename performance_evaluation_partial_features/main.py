@@ -6,7 +6,7 @@ import hashlib
 from data_loading import load_and_combine_datasets, preprocess_data, scale_features
 from models import MODELS, train_and_evaluate
 from analysis import perform_statistical_analysis, plot_accuracy_comparison, plot_statistical_results, plot_confusion_matrices, generate_reports
-from perormance_evaluation2.config import FEATURE_SETS  
+from performance_evaluation_partial_features.config import FEATURE_SETS  
 
 def main(feature_set_name="selected_features"):
     if feature_set_name not in FEATURE_SETS:
