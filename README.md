@@ -31,7 +31,7 @@ PROJECT-SPE/
 │       ├── UNSW-NB15_1.csv to 4.csv         # Raw dataset in parts
 │       ├── UNSW-NB15_LIST_EVENTS.csv        # List of events in dataset
 │       └── The UNSW-NB15 description.pdf    # Dataset documentation
-│
+│── performance_evaluation/                   # Datasets used in the project
 ├── theoretical_notes/                       # Notes on theoretical background
 ├── related-works/                           # Related works
 ├── idea_of_meaningful_features.txt          # Notes on selected features for analysis
