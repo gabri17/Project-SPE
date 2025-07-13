@@ -6,7 +6,7 @@ import pandas as pd
 import hashlib
 from data_loading import load_and_combine_datasets, preprocess_data, scale_features
 from models import MODELS, train_and_evaluate
-from analysis import perform_statistical_analysis, plot_statistical_results, plot_confusion_matrices, generate_reports
+from analysis import perform_statistical_analysis, plot_accuracy_comparison, plot_statistical_results, plot_confusion_matrices, generate_reports
 from perormance_evaluation2.config import FEATURE_SETS  
 
 def main(feature_set_name="selected_features"):
@@ -55,20 +55,26 @@ def main(feature_set_name="selected_features"):
     perform_statistical_analysis(binary_results, 'f1', results_dir)
     plot_statistical_results(binary_results, 'f1', results_dir)
     plot_confusion_matrices(binary_results, y_test, results_dir)
+    plot_accuracy_comparison(binary_results, results_dir)
+    perform_statistical_analysis(binary_results, 'accuracy', results_dir)
+    plot_statistical_results(binary_results, 'accuracy', results_dir)
+
     
     results_data = []
     for model_name, metrics in binary_results.items():
         row = {
-            'Model': model_name,
-            'Feature Set': feature_set_name,
-            'Train Time (s)': metrics.get('train_time', 'N/A'),
-            'Test Accuracy': metrics['accuracy'],
-            'Test Precision': metrics['precision'],
-            'Test Recall': metrics['recall'],
-            'Test F1': metrics['f1'],
-            'Test AUC': metrics.get('roc_auc', 'N/A'),
-            'CV F1 Mean': np.mean(metrics['cv_scores']['f1']),
-            'CV F1 Std': np.std(metrics['cv_scores']['f1'])
+        'Model': model_name,
+        'Feature Set': feature_set_name,
+        'Train Time (s)': metrics.get('train_time', 'N/A'),
+        'Test Accuracy': metrics['accuracy'],
+        'Test Precision': metrics['precision'],
+        'Test Recall': metrics['recall'],
+        'Test F1': metrics['f1'],
+        'Test AUC': metrics.get('roc_auc', 'N/A'),
+        'CV Accuracy Mean': np.mean(metrics['cv_scores']['accuracy']),
+        'CV Accuracy Std': np.std(metrics['cv_scores']['accuracy']),
+        'CV F1 Mean': np.mean(metrics['cv_scores']['f1']),
+        'CV F1 Std': np.std(metrics['cv_scores']['f1'])
         }
         results_data.append(row)
     

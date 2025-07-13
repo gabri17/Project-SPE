@@ -126,3 +126,53 @@ def generate_reports(models, X_test, y_test, models_dir="models", results_dir="r
                 plt.close()
         except Exception as e:
             print(f"Could not generate report for {model_name}: {str(e)}")
+
+def plot_accuracy_comparison(results, results_dir="results"):
+    model_names = []
+    test_accuracies = []
+    cv_acc_means = []
+    cv_acc_stds = []
+    
+    for model_name, data in results.items():
+        model_names.append(model_name)
+        test_accuracies.append(data['accuracy'])
+        cv_acc_means.append(np.mean(data['cv_scores']['accuracy']))
+        cv_acc_stds.append(np.std(data['cv_scores']['accuracy']))
+    
+    # Sort by test accuracy
+    sorted_idx = np.argsort(test_accuracies)[::-1]
+    model_names = [model_names[i] for i in sorted_idx]
+    test_accuracies = [test_accuracies[i] for i in sorted_idx]
+    cv_acc_means = [cv_acc_means[i] for i in sorted_idx]
+    cv_acc_stds = [cv_acc_stds[i] for i in sorted_idx]
+    
+    # Create plot
+    plt.figure(figsize=(14, 8))
+    x_pos = np.arange(len(model_names))
+    
+    # Test accuracy bars
+    plt.bar(x_pos, test_accuracies, width=0.4, 
+            label='Test Accuracy', color='skyblue')
+    
+    # CV accuracy points with error bars
+    plt.errorbar(x_pos, cv_acc_means, yerr=cv_acc_stds, 
+                 fmt='o', color='darkred', capsize=5,
+                 label='CV Accuracy (Mean ± SD)')
+    
+    # Add values
+    for i, v in enumerate(test_accuracies):
+        plt.text(i, v + 0.01, f"{v:.3f}", ha='center')
+    for i, (mean, std) in enumerate(zip(cv_acc_means, cv_acc_stds)):
+        plt.text(i, mean + 0.01, f"{mean:.3f}±{std:.3f}", 
+                 ha='center', color='darkred')
+    
+    plt.xticks(x_pos, model_names, rotation=15)
+    plt.ylabel('Accuracy Score')
+    plt.title('Model Accuracy Comparison')
+    plt.ylim(0, 1.1)
+    plt.legend()
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    
+    plt.savefig(os.path.join(results_dir, "accuracy_comparison.png"))
+    plt.close()

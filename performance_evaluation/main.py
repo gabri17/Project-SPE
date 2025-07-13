@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 from data_loading import load_and_combine_datasets, preprocess_data, scale_features
 from models import MODELS, train_and_evaluate
-from analysis import perform_statistical_analysis, plot_statistical_results, plot_confusion_matrices, generate_reports
+from analysis import perform_statistical_analysis, plot_accuracy_comparison, plot_statistical_results, plot_confusion_matrices, generate_reports
 
 def main():
     for d in ("models", "results"):
@@ -34,19 +34,26 @@ def main():
     perform_statistical_analysis(binary_results, 'f1')
     plot_statistical_results(binary_results, 'f1')
     plot_confusion_matrices(binary_results, y_test)
+    plot_accuracy_comparison(binary_results)
+
+# Add accuracy to statistical analysis
+    perform_statistical_analysis(binary_results, 'accuracy')
+    plot_statistical_results(binary_results, 'accuracy')
     
     results_data = []
     for model_name, metrics in binary_results.items():
         row = {
-            'Model': model_name,
-            'Train Time (s)': metrics.get('train_time', 'N/A'),
-            'Test Accuracy': metrics['accuracy'],
-            'Test Precision': metrics['precision'],
-            'Test Recall': metrics['recall'],
-            'Test F1': metrics['f1'],
-            'Test AUC': metrics.get('roc_auc', 'N/A'),
-            'CV F1 Mean': np.mean(metrics['cv_scores']['f1']),
-            'CV F1 Std': np.std(metrics['cv_scores']['f1'])
+        'Model': model_name,
+        'Train Time (s)': metrics.get('train_time', 'N/A'),
+        'Test Accuracy': metrics['accuracy'],
+        'Test Precision': metrics['precision'],
+        'Test Recall': metrics['recall'],
+        'Test F1': metrics['f1'],
+        'Test AUC': metrics.get('roc_auc', 'N/A'),
+        'CV Accuracy Mean': np.mean(metrics['cv_scores']['accuracy']),
+        'CV Accuracy Std': np.std(metrics['cv_scores']['accuracy']),
+        'CV F1 Mean': np.mean(metrics['cv_scores']['f1']),
+        'CV F1 Std': np.std(metrics['cv_scores']['f1'])
         }
         results_data.append(row)
     
