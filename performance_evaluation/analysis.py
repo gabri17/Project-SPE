@@ -138,27 +138,22 @@ def plot_accuracy_comparison(results):
         cv_acc_means.append(np.mean(data['cv_scores']['accuracy']))
         cv_acc_stds.append(np.std(data['cv_scores']['accuracy']))
     
-    # Sort by test accuracy
     sorted_idx = np.argsort(test_accuracies)[::-1]
     model_names = [model_names[i] for i in sorted_idx]
     test_accuracies = [test_accuracies[i] for i in sorted_idx]
     cv_acc_means = [cv_acc_means[i] for i in sorted_idx]
     cv_acc_stds = [cv_acc_stds[i] for i in sorted_idx]
     
-    # Create plot
     plt.figure(figsize=(14, 8))
     x_pos = np.arange(len(model_names))
     
-    # Test accuracy bars
     plt.bar(x_pos, test_accuracies, width=0.4, 
             label='Test Accuracy', color='skyblue')
     
-    # CV accuracy points with error bars
     plt.errorbar(x_pos, cv_acc_means, yerr=cv_acc_stds, 
                  fmt='o', color='darkred', capsize=5,
                  label='CV Accuracy (Mean ± SD)')
     
-    # Add values
     for i, v in enumerate(test_accuracies):
         plt.text(i, v + 0.01, f"{v:.3f}", ha='center')
     for i, (mean, std) in enumerate(zip(cv_acc_means, cv_acc_stds)):

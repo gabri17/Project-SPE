@@ -35,8 +35,6 @@ def main():
     plot_statistical_results(binary_results, 'f1')
     plot_confusion_matrices(binary_results, y_test)
     plot_accuracy_comparison(binary_results)
-
-# Add accuracy to statistical analysis
     perform_statistical_analysis(binary_results, 'accuracy')
     plot_statistical_results(binary_results, 'accuracy')
     

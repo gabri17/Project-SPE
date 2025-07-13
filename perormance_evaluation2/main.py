@@ -1,4 +1,3 @@
-# main.py
 import os
 import numpy as np
 import joblib
@@ -10,13 +9,11 @@ from analysis import perform_statistical_analysis, plot_accuracy_comparison, plo
 from perormance_evaluation2.config import FEATURE_SETS  
 
 def main(feature_set_name="selected_features"):
-    # Validate feature set
     if feature_set_name not in FEATURE_SETS:
         raise ValueError(f"Invalid feature set: {feature_set_name}")
     
     selected_features = FEATURE_SETS[feature_set_name]
     
-    # Create unique output directory
     feature_hash = hashlib.md5(str(selected_features).encode()).hexdigest()[:8]
     base_dir = f"output_{feature_set_name}_{feature_hash}"
     models_dir = os.path.join(base_dir, "models")
@@ -31,11 +28,10 @@ def main(feature_set_name="selected_features"):
     train_df = processed_df[processed_df['dataset'] == 'train']
     test_df = processed_df[processed_df['dataset'] == 'test']
     
-    # Feature selection
     if selected_features:
         X_train = train_df[selected_features]
         X_test = test_df[selected_features]
-    else:  # Use all features
+    else:  
         X_train = train_df.drop(columns=['attack_cat', 'is_attack', 'label'])
         X_test = test_df.drop(columns=['attack_cat', 'is_attack', 'label'])
     

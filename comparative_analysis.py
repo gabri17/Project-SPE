@@ -9,7 +9,6 @@ from scipy.stats import ttest_rel, f_oneway
 import joblib
 
 def load_feature_set_results(feature_folders):
-    """Load results from all feature set folders into a combined DataFrame"""
     all_data = []
     
     for folder in feature_folders:
@@ -127,7 +126,6 @@ def compare_feature_sets(df, output_dir):
     return anova_df, pairwise_df
 
 def visualize_results(df, output_dir):
-    """Create visualizations comparing model performance across feature sets"""
     os.makedirs(output_dir, exist_ok=True)
     
     plt.figure(figsize=(12, 8))
