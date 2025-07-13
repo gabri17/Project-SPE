@@ -1,3 +1,5 @@
+Some notes about the features.
+
 MEANINGFUL FEATURES FOR PREDICTION (some flow and then basic features)
 - proto: the network protocol used, it is usefel because there are protocol-specific attack patterns
 - state: in which state of the connection we are, suspicious states may indicate port scans or SYN floods

@@ -2,7 +2,7 @@
 ==========================================
 Performance Evaluation part.
 
-Pre process dataset (remove insignificant features, map nominal to numeric features, scale features (min-max scaling or z-normalization))
+Pre process dataset (remove insignificant features, map nominal to numeric features, scale features min-max scaling)
 
 Train and test theese models (just on entire test dataset or also splitting it into k folds)
 - Naive Bayes

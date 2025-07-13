@@ -9,7 +9,7 @@ Need to install directory for datasets in CSV format from <a href="https://unsw-
 
 Then it must inserted in the /datasets directory inside the repository.
 
-**Note**: rename the downloaded directory "CSV Files" in "CSV_Files" and "Training and Tesing Sets" in "training_testing_sets".
+**Note**: rename the downloaded directory "CSV Files" in "CSV_Files" and "Training and Testing Sets" in "training_testing_sets".
 
 Make sure to use at least version 3.12 of Python.
 
