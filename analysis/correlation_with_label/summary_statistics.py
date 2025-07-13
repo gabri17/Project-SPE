@@ -67,14 +67,6 @@ class FeatureAnalysis:
         t_stat, t_p = ttest_ind(self.group_0, self.group_1, equal_var=False)
         return t_stat, t_p
 
-    def mannwhitney(self):
-        u_stat, u_p = mannwhitneyu(self.group_0, self.group_1, alternative='two-sided')
-        return u_stat, u_p
-
-    def anova(self):
-        stat, p = f_oneway(self.group_0, self.group_1)
-        return stat, p
-
     def mean_median_diff(self):
         mean_diff = self.group_1.mean() - self.group_0.mean()
         median_diff = self.group_1.median() - self.group_0.median()
@@ -108,8 +100,6 @@ class FeatureAnalysis:
         median_0, median_1 = self.median()
         q25_0, q75_0, q25_1, q75_1 = self.quantiles()
         t_stat, t_p = self.ttest()
-        u_stat, u_p = self.mannwhitney()
-        stat, p = self.anova()
         mean_diff, median_diff = self.mean_median_diff()
         cohens_d = self.cohens_d()
         cv_0, cv_1 = self.coefficient_of_variation()
@@ -138,8 +128,6 @@ class FeatureAnalysis:
             f.write(f"\nMAD when NO ATTACK: {mad_0:.3f}, Gap: {gap_0:.3f}\n")
             f.write(f"MAD when ATTACK: {mad_1:.3f}, Gap: {gap_1:.3f}\n")
             f.write(f"\nT-test p-value: {t_p:.3f}\n")
-            f.write(f"Mann-Whitney U test p-value: {u_p:.3f}\n")
-            f.write(f"Anova F-Test p-value: {p:.3f}\n")
             f.write(f"Mean difference: {mean_diff:.3f}\n")
             f.write(f"Median difference: {median_diff:.3f}\n")
             f.write(f"Cohen's d: {cohens_d:.3f}\n")
@@ -152,8 +140,6 @@ class FeatureAnalysis:
         median_ci_1 = self.median_confidence_interval(self.group_1)
         q25_0, q75_0, q25_1, q75_1 = self.quantiles()
         t_stat, t_p = self.ttest()
-        u_stat, u_p = self.mannwhitney()
-        stat, p = self.anova()
         mean_diff, median_diff = self.mean_median_diff()
         cohens_d = self.cohens_d()
         cv_0, cv_1 = self.coefficient_of_variation()
@@ -182,8 +168,6 @@ class FeatureAnalysis:
         print(f"MAD when NO ATTACK: {mad_0:.3f}, Gap: {gap_0:.3f}")
         print(f"MAD when ATTACK: {mad_1:.3f}, Gap: {gap_1:.3f}\n")
         print(f"\nT-test p-value: {t_p:.3f}")
-        print(f"Mann-Whitney U test p-value: {u_p:.3f}")
-        print(f"Anova F-Test p-value={p:.4g}")
         print(f"Mean difference: {mean_diff:.3f}")
         print(f"Median difference: {median_diff:.3f}")
         print(f"Cohen's d: {cohens_d:.3f}")
@@ -192,9 +176,6 @@ def main():
     loader = UNSWNB15Loader()
     df = loader.load()
     print("Dataset loaded successfully.")
-
-    """ df['sbytes_over_dbytes'] = df['sbytes'] / df['dbytes']
-    df['sbytes_over_dbytes'].replace([np.inf, -np.inf], 0, inplace=True) """
 
     for (feature, unit) in [('sttl', 'TTL value'), ('ct_state_ttl', 'No. connections'), ('ct_dst_src_ltm', 'No. connections'), ('ct_dst_sport_ltm', 'No. connections'), ('ct_src_dport_ltm', 'No. connections'), ('ct_srv_dst', 'No. connections'), ('ct_srv_src', 'No. connections'), ('ct_src_ ltm', 'No. connections'), ('ct_dst_ltm', 'No. connections'), ('Sload', 'Source load (bits per second)')]:
         analysis = FeatureAnalysis(df, feature, measure_unit=unit)
