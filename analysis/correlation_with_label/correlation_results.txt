@@ -13,15 +13,15 @@ ct_src_ ltm         0.343246
 ct_dst_ltm          0.339464
 Ltime               0.275660
 Stime               0.275660
-Sload               0.192278 #up to here
+Sload               0.192278
 ackdat              0.143443
 tcprtt              0.143109
 dttl                0.134947
 synack              0.122253
 ct_flw_http_mthd    0.083188
 is_ftp_login        0.031956
-Sjit                0.020959 #done
-sbytes              0.010180 #done
+Sjit                0.020959
+sbytes              0.010180
 
 Top 20 negative correlations with label:
 Name
@@ -42,8 +42,8 @@ Spkts             -0.120880
 Dload             -0.219710
 stcpb             -0.233422
 dtcpb             -0.233513
-dmeansz           -0.272397 #done
-dwin              -0.313920 #done
-swin              -0.315108 #done
+dmeansz           -0.272397
+dwin              -0.313920
+swin              -0.315108
 
 Categorical columns: ['srcip', 'sport', 'dstip', 'dsport', 'proto', 'state', 'service', 'ct_ftp_cmd', 'attack_cat']

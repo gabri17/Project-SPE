@@ -1,9 +1,6 @@
 import pandas as pd
-import os
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy.cluster.hierarchy import linkage, dendrogram
-import numpy as np
 from data_loader import UNSWNB15Loader
 
 loader = UNSWNB15Loader()

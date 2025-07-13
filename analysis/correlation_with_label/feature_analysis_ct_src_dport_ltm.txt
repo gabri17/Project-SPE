@@ -27,8 +27,6 @@ MAD when NO ATTACK: 3.736, Gap: 0.556
 MAD when ATTACK: 9.944, Gap: 0.369
 
 T-test p-value: 0.000
-Mann-Whitney U test p-value: 0.000
-Anova F-Test p-value: 0.000
 Mean difference: 10.119
 Median difference: 12.000
 Cohen's d: 1.300
