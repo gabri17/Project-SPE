@@ -9,7 +9,7 @@ Need to install directory for datasets in CSV format from <a href="https://unsw-
 
 Then it must inserted in the /datasets directory inside the repository.
 
-**Note**: rename the downloaded directory "CSV Files" in "CSV_Files".
+**Note**: rename the downloaded directory "CSV Files" in "CSV_Files" and "Training and Tesing Sets" in "training_testing_sets".
 
 Make sure to use at least version 3.12 of Python.
 
@@ -17,13 +17,15 @@ Make sure to use at least version 3.12 of Python.
 ```
 PROJECT-SPE/
 ├── analysis/                                # Contains Python modules for statistical analysis
-│   ├── a)all_to_all_correlation/            # Analysis of all-to-all feature correlation
-│   ├── b)correlation_with_label/            # Correlation analysis between features and labels
-│   └── c)correlation_with_attack_cat/       # Correlation analysis with attack categories
+│   ├── all_to_all_correlation/              # Analysis of all-to-all feature correlation, with /results directory providing results we got
+│   ├── correlation_with_label/              # Correlation analysis between features and labels, with /results directory providing results we got
+│   └── correlation_with_attack_cat/         # Correlation analysis with attack categories, with /results directory providing results we got
 │
 ├── datasets/                                # Datasets used in the project
 │   └── CSV_Files/                           # Raw and processed CSV dataset files
 │       ├── training_testing_sets/           # Dataset splits for training and testing
+|           |── UNSW_NB15_training-set.csv   # Training set
+|           └── UNSW_NB15_testing-set.csv    # Testing set
 │       ├── UNSW-NB15_features.csv           # Feature metadata
 │       ├── UNSW-NB15_GT.csv                 # Ground truth labels
 │       ├── UNSW-NB15_1.csv to 4.csv         # Raw dataset in parts
