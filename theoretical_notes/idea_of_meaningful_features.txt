@@ -22,15 +22,15 @@ even less:
 
 more or less:
 selected_features = [
-    'sttl',                # strongest predictor
-    'ct_dst_src_ltm',      # best from connection tracking group
-    'ct_flw_http_mthd',    # potentially informative (categorical)
-    'sload',               # mild positive correlation
-    'tcprtt',              # moderate, representative of RTT
-    'dttl',                # mild correlation
-    'proto',               # categorical, worth testing
-    'service',             # categorical
-    'state'                # categorical
+    'sttl',                
+    'ct_dst_src_ltm',    
+    'ct_flw_http_mthd',   
+    'sload',              
+    'tcprtt',             
+    'dttl',               
+    'proto',               
+    'service',           
+    'state'                
 ]
 
 

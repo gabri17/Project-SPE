@@ -8,9 +8,9 @@ warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 def load_and_combine_datasets():
-    base_path = os.path.join("datasets", "CSV Files")
-    training_set_file = os.path.join(base_path, 'Training and Testing Sets', 'UNSW_NB15_training-set.csv')
-    testing_set_file = os.path.join(base_path, 'Training and Testing Sets', 'UNSW_NB15_testing-set.csv')
+    base_path = os.path.join("datasets", "CSV_Files")
+    training_set_file = os.path.join(base_path, 'training_testing_sets', 'UNSW_NB15_training-set.csv')
+    testing_set_file = os.path.join(base_path, 'training_testing_sets', 'UNSW_NB15_testing-set.csv')
 
     train_df = pd.read_csv(training_set_file, header=0, low_memory=False, na_values=['', ' ', 'NA', 'N/A', 'NaN', 'nan', '-'], encoding='utf-8')
     test_df = pd.read_csv(testing_set_file, header=0, low_memory=False, na_values=['', ' ', 'NA', 'N/A', 'NaN', 'nan', '-'], encoding='utf-8')
