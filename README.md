@@ -42,6 +42,12 @@ PROJECT-SPE/
 ├── comparative_analysis.py                      # Directory with performance evaluation modules involving PARTIAL FEATURE SETS
 |                                                # It includes same modules as above
 |
+├── full_feature_set_results/                    # Performance evaluation results with full feature set 
+├── second_feature_set_results/                  # Performance evaluation results with second feature set
+├── third_feature_set_results/                   # Performance evaluation results with third feature set
+├── fourth_feature_set_results/                  # Performance evaluation results with fourth feature set
+├── comparative_analysis_results/                # Results of the statistical analysis among the four feature sets
+|
 ├── Project-Idea.pdf                             # PDF document outlining the project idea
 ├── .gitignore                                   # Git ignore file
 ├── theoretical_notes/                           # Notes on theoretical background
