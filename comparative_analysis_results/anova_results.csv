@@ -1,0 +1,6 @@
+Model,F-value,p-value,Significant (p<0.05)
+Naive Bayes,,,False
+Decision Tree,,,False
+Logistic Regression,,,False
+Random Forest,,,False
+Neural Network,,,False

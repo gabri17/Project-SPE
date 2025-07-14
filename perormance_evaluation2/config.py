@@ -1,7 +1,8 @@
 FEATURE_SETS = {
     "all_features": None,  
     "selected_features": [
-'sttl', 'ct_dst_src_ltm', 'sload', 'ackdat', 'is_ftp_login'
+     'sttl', 'ct_dst_src_ltm', 'sload', 'ackdat', 'is_ftp_login'
+
     ]
 }
 
@@ -15,14 +16,14 @@ FEATURE_SETS = {
 
 ## Third set of selected features
 # 'sttl',                
-#     'ct_dst_src_ltm',      
-#     'ct_flw_http_mthd',  
-#     'sload',             
-#     'tcprtt',             
-#     'dttl',                
-#     'proto',              
-#     'service',           
-#     'state'
+    # 'ct_dst_src_ltm',      
+    # 'ct_flw_http_mthd',  
+    # 'sload',             
+    # 'tcprtt',             
+    # 'dttl',                
+    # 'proto',              
+    # 'service',           
+    # 'state'
 
 ## Fourth set of selected features
 # 'sttl', 'ct_dst_src_ltm', 'sload', 'ackdat', 'is_ftp_login'

@@ -58,7 +58,6 @@ def train_and_evaluate(models, X_train, y_train, X_test, y_test,
     trained_models = {}
     kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     
-    # Ensure directories exist
     os.makedirs(models_dir, exist_ok=True)
     os.makedirs(results_dir, exist_ok=True)
     
